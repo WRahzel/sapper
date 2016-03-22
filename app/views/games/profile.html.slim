@@ -1,0 +1,16 @@
+.col-xs-8
+    .table-block
+        p= "Успешных разминирований - #{@wins.count}"
+        p= "Количество поражений - #{@defeat_count}"
+        table.table.table-striped
+            thead
+                tr
+                    td #
+                    td Количество мин
+                    td Время (секунд)
+            tbody
+                - @wins.each do |game|
+                    tr
+                        td= game.id
+                        td= game.mines_count
+                        td= game.times

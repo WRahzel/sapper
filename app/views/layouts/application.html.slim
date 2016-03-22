@@ -1,0 +1,18 @@
+doctype html
+html
+    head
+        title Mines
+        = stylesheet_link_tag 'application', media: 'all'
+        = javascript_include_tag 'application'
+        = csrf_meta_tags
+    body
+        / фоновое изображение
+        .inside
+            .shadow
+        / навигация
+        = render 'layouts/nav'
+        = render 'layouts/login_modal'
+        = render 'layouts/sign_up_modal'
+        .container
+            .row
+                = yield

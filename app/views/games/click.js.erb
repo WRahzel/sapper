@@ -1,0 +1,24 @@
+<% if @game.game_result == 'none' %>
+    <% @cell_list.each do |cell| %>
+        <% if cell[1] == 'marked' %>
+            $('.square-<%= cell[0] %>').append('<%= image_tag "red.png" %>');
+        <% elsif cell[1] == 'unmarked' %>
+            $('.square-<%= cell[0] %> img').remove();
+        <% elsif cell[1] != 'mine' %>
+            $('.square-<%= cell[0] %>').removeClass('unknown');
+            <% if cell[1] > 0 %>
+                $('.square-<%= cell[0] %>').append('<p><%= cell[1] %></p>');
+            <% end %>
+        <% end %>
+    <% end %>
+<% else %>
+    $('#result').html('Результат - <%= @game.game_result %>');
+    $('.square-<%= @cell_list[0][0] %>').removeClass('unknown');
+    <% if @game.game_result == 'Поражение' %>
+        <% @cell_list.each do |cell| %>
+            $('.square-<%= cell[0] %>').removeClass('unknown');
+            $('.square-<%= cell[0] %> img').remove();
+            $('.square-<%= cell[0] %>').append('<%= image_tag "mine.png" %>');
+        <% end %>
+    <% end %>
+<% end %>

@@ -1,0 +1,12 @@
+.col-xs-6
+    #mines
+        - (1..10).reverse_each do |y|
+            - ('a'..'j').each do |x|
+                .square.unknown class="square-#{x}#{y}" data={x: "#{x}", y: "#{y}"}
+            .clearfix
+.col-xs-4
+    #info_block
+        p Вам обязательно надо разминировать минное поле, скоро в этом месте пройдет косяк пингвинов, они могут пострадать. Нельзя это допустить.
+        p= "Количество мин - #{@game.mines_count}"
+        p#my_timer 00:00:00
+        p#result
